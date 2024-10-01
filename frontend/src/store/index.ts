@@ -1,14 +1,24 @@
 import { createStore } from 'vuex'
 
-export default createStore({
+const store =  createStore({
   state: {
+    state(){
+      return{
+      authenticated:false,
+     }
+    },
   },
   getters: {
   },
   mutations: {
+    set_auth(state:any,auth){
+      state.authenticated = auth
+    },
   },
   actions: {
   },
   modules: {
   }
 })
+
+export default store;

@@ -6,6 +6,7 @@ import {
     HttpStatus,
     Patch,
     Post,
+    Response,
     Put,
     Request,
   } from '@nestjs/common';
@@ -38,6 +39,6 @@ import { Public } from 'src/common/decorators/public.decorators';
     @Patch('reset-password')
     updatePassword(@Body() updatePasswordDto: Record<string, any>) {
       return this.authService.updatePassword(updatePasswordDto.token ,updatePasswordDto.password);
-      }
+    }
   }
 

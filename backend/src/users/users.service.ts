@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { user } from './users.entity';
 import * as bcrypt from 'bcrypt';
 
@@ -6,13 +6,21 @@ import * as bcrypt from 'bcrypt';
 export class UsersService {
   constructor(@Inject('USER_REPOSITORY') private userrepository:typeof user){}
 
-  async registeruser(userdata:any):Promise<user>{
+  async registeruser(userdata:any):Promise<{user:user,statusCode:number}>{
      const password = userdata.password;
      const hash = await bcrypt.hash(password,10);
      userdata.password = hash;
 
+     const email_already = await this.userrepository.findOne(userdata.email);
+     if(email_already){
+      throw new Error('Email already exists');
+      }
+
      const newuser = await this.userrepository.create(userdata);
-     return newuser;
+     return{
+      user:newuser,
+      statusCode:HttpStatus.OK
+     }
   }
 
   findOne(email: string): Promise<user> {
@@ -32,7 +40,7 @@ export class UsersService {
     return this.userrepository.findAll<user>();
   }
 
-  save(userdata:any):Promise<user[]>{
-    return this.save(userdata);
+  async savedata(userdata:any):Promise<user>{
+    return userdata.save();
   }
 }
