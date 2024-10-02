@@ -1,6 +1,11 @@
 import { Body, Controller, HttpStatus, Post,Response } from "@nestjs/common";
 import { UsersService } from "./users.service";
-import { Public } from "src/common/decorators/public.decorators";
+// import { Public } from "src/decorators/public.decorators";
+import { SetMetadata } from '@nestjs/common';
+
+export const Public = () => SetMetadata('isPublic', true);
+  
+
 
 @Controller('user')
     

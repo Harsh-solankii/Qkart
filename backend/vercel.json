@@ -5,6 +5,8 @@
         "src": "/(.*)",
         "dest": "/api/index.ts"
       }
-    ]
+    ],
+   "buildCommand": "npm install && npm run build",
+  "outputDirectory": "build"
   }
   

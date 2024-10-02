@@ -11,7 +11,9 @@ import {
     Request,
   } from '@nestjs/common';
   import { AuthService } from './auth.service';
-import { Public } from 'src/common/decorators/public.decorators';
+import { SetMetadata } from '@nestjs/common';
+
+export const Public = () => SetMetadata('isPublic', true);
   
   @Controller('auth')
   export class AuthController {
