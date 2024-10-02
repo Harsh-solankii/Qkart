@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkfrontend"]=self["webpackChunkfrontend"]||[]).push([[851],{1169:function(n,r){r.A=(n,r)=>{const t=n.__vccOpts||n;for(const[e,u]of r)t[e]=u;return t}},7851:function(n,r,t){t.r(r),t.d(r,{default:function(){return f}});var e=t(5976);function u(n,r){return(0,e.uX)(),(0,e.CE)("div",null," This is the home dashboard ")}var o=t(1169);const c={},s=(0,o.A)(c,[["render",u]]);var f=s}}]);
+//# sourceMappingURL=851.463718a4.js.map

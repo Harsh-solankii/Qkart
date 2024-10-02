@@ -32,6 +32,7 @@ export class AuthService {
     if (!hash_password) {
       throw new UnauthorizedException();
     }
+    
     const payload = { sub: user.id, username: user.email };
 
     return {
@@ -43,8 +44,6 @@ export class AuthService {
 
   async forgotPassword(email:string):Promise<{msg:string,statusCode:number}>{
      const user = await this.usersService.findOne(email);
-
-     console.log(user);
 
      if(!user){
         throw new NotFoundException('Email address not found');
