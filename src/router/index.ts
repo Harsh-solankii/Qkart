@@ -1,19 +1,42 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import store from '@/store'
+
+const guard = (to:any) => {
+  if(to.meta.requiresAuth && !store.state.authenticated){
+    return {
+      path: '/',
+      query: { redirect: to.fullPath },
+    }
+  }
+}
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'login',
+    component: () => import('../components/LoginCom.vue')
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/home',
+    name: 'home',
+    component: () => import('../components/HomeCom.vue'),
+    meta:{requiresAuth:true},
+    beforeEnter:[guard]
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import('../components/RegisterCom.vue')
+  },
+  {
+    path: '/forgot-password',
+    name: 'forgotpassword',
+    component: () => import('../components/ForgotPassword.vue')
+  },
+  {
+    path: '/reset-password',
+    name: 'resetpassword',
+    component: () => import('../components/PassConfirmpas.vue')
   }
 ]
 
