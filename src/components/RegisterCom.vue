@@ -136,13 +136,15 @@
   const mainerror = ref('');
   
   const onSubmit = handleSubmit(async (values) => {
-      let response = await fetch("http://localhost:3000/user/register", {
+      let response = await fetch("https://qkart-vue-nest.vercel.app/user/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
       
       let data = await response.json();
+
+      console.log(data);
 
       if (data.statusCode === 200) {
           router.push('/');
