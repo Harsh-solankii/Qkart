@@ -68,7 +68,7 @@ const router = useRouter();
 const mainerror = ref();
 
 const onSubmit = handleSubmit(async(values) => {
-    let data:any = await fetch("https://qkart-vue-nest.vercel.app/auth/login", {
+    let data:any = await fetch("http://localhost:3000/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
@@ -79,9 +79,11 @@ const onSubmit = handleSubmit(async(values) => {
     if(data.statusCode === 200){
       localStorage.setItem('id',data.userid);
       localStorage.setItem('token',data.access_token);
+      alert("login successfully");
       router.push('/home');
     }else{
       mainerror.value = data.message;
+      alert("wrong credetianls");
     }
 });
 
