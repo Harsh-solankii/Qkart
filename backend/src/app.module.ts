@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { mailermodule } from './common/modules/mailer.module';
-import { databaseservice } from './common/providers/database.service';
+import { databaseservice } from './database/database.service';
 
 
 @Module({
