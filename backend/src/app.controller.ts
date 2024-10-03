@@ -8,11 +8,13 @@ export const Public = () => SetMetadata('isPublic', true);
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  @Public()
   @Get()
   getHello(): string {
     return this.appService.getHello();
   }
 
+  @Public()
   @Get('test')
   gettest(): string {
     return 'just testing for deployment and it showing if it worked';
