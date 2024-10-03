@@ -6,6 +6,7 @@ export default async (req, res) => {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe({
     validatorPackage: require('@nestjs/class-validator'),
+    transformerPackage: require('@nestjs/class-transformer')
   }));
   app.enableCors();
 
