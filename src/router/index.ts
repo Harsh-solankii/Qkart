@@ -1,14 +1,14 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import store from '@/store'
 
-const guard = (to:any) => {
-  if(to.meta.requiresAuth && !store.state.authenticated){
-    return {
-      path: '/',
-      query: { redirect: to.fullPath },
-    }
-  }
-}
+// const guard = (to:any) => {
+//   if(to.meta.requiresAuth && !store.state.authenticated){
+//     return {
+//       path: '/',
+//       query: { redirect: to.fullPath },
+//     }
+//   }
+// }
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -20,8 +20,8 @@ const routes: Array<RouteRecordRaw> = [
     path: '/home',
     name: 'home',
     component: () => import('../components/HomeCom.vue'),
-    meta:{requiresAuth:true},
-    beforeEnter:[guard]
+    // meta:{requiresAuth:true},
+    // beforeEnter:[guard]
   },
   {
     path: '/register',
