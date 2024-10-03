@@ -58,7 +58,7 @@ export class AuthService {
          template: 'reset-password', // Name of the template file (without extension)
          context: {
              name: email, // You can add other user info if needed
-             resetLink: `http://localhost:8080/reset-password?token=${resetToken}`, // Link to your reset page
+             resetLink: `http://harsh-solanki-codes.github.io/Qkart-vue-nest/reset-password?token=${resetToken}`, // Link to your reset page
          },
      });  
 
