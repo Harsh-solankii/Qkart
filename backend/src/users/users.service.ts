@@ -1,17 +1,28 @@
-import { HttpStatus, Inject, Injectable } from '@nestjs/common';
+import { ConsoleLogger, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { user } from './users.entity';
 import * as bcrypt from 'bcrypt';
+const { Op } = require('sequelize');
+
+
 
 @Injectable()
 export class UsersService {
   constructor(@Inject('USER_REPOSITORY') private userrepository:typeof user){}
-
+  
   async registeruser(userdata:any):Promise<{user:user,statusCode:number}>{
-     const password = userdata.password;
-     const hash = await bcrypt.hash(password,10);
-     userdata.password = hash;
-
-     const email_already = await this.userrepository.findOne(userdata.email);
+    console.log(userdata);
+    const password = userdata.password;
+    const hash = await bcrypt.hash(password,10);
+    userdata.password = hash;
+    
+    let email_already = await this.userrepository.findOne({
+      where: {
+        email: {
+          [Op.eq]: userdata.email, // Using equality operator
+        },
+      },
+    });
+     
      if(email_already){
       throw new Error('Email already exists');
       }

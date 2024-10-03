@@ -45,7 +45,7 @@
   
   const onSubmit = handleSubmit(async (values) => {
     mainerror.value = "Wait...."
-      let response = await fetch("http://localhost:3000/auth/forgot-password", {
+      let response = await fetch("https://qkart-vue-nest.vercel.app/auth/forgot-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),

@@ -67,7 +67,7 @@
   });
   
   const onSubmit = handleSubmit(async (values) => {
-      let response = await fetch("http://localhost:3000/auth/reset-password", {
+      let response = await fetch("https://qkart-vue-nest.vercel.app/auth/reset-password", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password:values.password, token: token.value }), // Include the token in the request
